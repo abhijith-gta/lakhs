@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorry for everything Ponnehhh 😞 💔</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #ff9a9e, #fecfef, #fbc2eb, #a18cd1);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            overflow-x: hidden;
+            color: #333;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .font-cursive {
+            font-family: 'Caveat', cursive;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.2);
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        .animate-heartbeat {
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0vh) scale(0.8); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(1.2) rotate(45deg); opacity: 0; }
+        }
+        .heart {
+            position: fixed;
+            bottom: -10vh;
+            font-size: 24px;
+            animation: float linear infinite;
+            z-index: 0;
+            user-select: none;
+            pointer-events: none;
+            filter: drop-shadow(0 0 5px rgba(255,105,180,0.5));
+        }
+
+        /* Smooth transition for button */
+        #no-btn {
+            transition: left 0.3s ease, top 0.3s ease, width 0.3s ease, height 0.3s ease;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4 selection:bg-pink-400 selection:text-white relative">
+
+    <div id="hearts-container"></div>
+
+    <main class="z-10 w-full max-w-lg glass-card rounded-3xl p-8 flex flex-col items-center text-center mt-4 mb-8">
+        
+        <!-- GIF Section -->
+        <div class="mb-4">
+            <img id="main-gif" src="https://media.tenor.com/8QjP-F6aCbwAAAAi/peach-cat-crying.gif" alt="Cute Crying Cat" class="w-40 h-40 object-contain mx-auto rounded-2xl drop-shadow-md">
+        </div>
+
+        <h1 class="font-cursive text-4xl md:text-5xl font-bold text-pink-600 mb-2 drop-shadow-sm">Sorry for everything Ponnehhh 😞 💔</h1>
+        
+        <div class="space-y-4 text-gray-800 text-sm md:text-base leading-relaxed mt-4 bg-white/40 p-4 rounded-2xl border border-white/50">
+            <p class="font-semibold text-pink-600">Da sry eni orikalum engane onnum undavella... 🥺</p>
+            <p>Nte mistake alla ellam, sry njn apol nte mindil ni pettan angane pranjalol possessive tonni ata angane pannje. Enik eni etu pole onnum avarella promise, njn deshayapett paranjatalla.</p>
+            <p class="font-medium text-pink-700">I love youuuu ❤️ enik niond adi ittod irikan istavallaa. Enne kond atupatella vatt pedikum so ellam vedd sryy...</p>
+        </div>
+
+        <!-- Buttons Section -->
+        <div class="mt-6 w-full">
+            <h2 id="question-text" class="font-cursive text-3xl font-bold text-purple-700 mb-6 drop-shadow-sm">Apol ellam nallam compramise akki illae? 🥹</h2>
+            
+            <div id="action-buttons" class="relative flex justify-center items-center gap-6 min-h-[80px] w-full">
+                <!-- Yes Button (Left) -->
+                <button id="yes-btn" onclick="acceptSorry()" class="px-8 py-3 bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white font-bold rounded-full shadow-lg animate-heartbeat hover:scale-110 cursor-pointer z-10 border-2 border-pink-300">
+                    Yes! ❤️
+                </button>
+
+                <!-- No Button (Right) -->
+                <button id="no-btn" onmouseenter="handleNoClick(event)" ontouchstart="handleNoClick(event)" onclick="handleNoClick(event)" class="min-w-[100px] px-6 py-3 bg-white text-pink-500 font-bold rounded-full shadow-md hover:bg-gray-50 border-2 border-pink-200 cursor-pointer z-[9999] relative flex items-center justify-center">
+                    <span id="no-text" class="text-base pointer-events-none">No 😢</span>
+                </button>
+            </div>
+
+            <!-- Success Hidden Message -->
+            <div id="success-msg" class="hidden mt-6 p-6 bg-pink-100/80 border-2 border-pink-300 rounded-2xl animate-bounce shadow-xl">
+                <h3 class="font-cursive text-4xl font-bold text-pink-600 drop-shadow-sm">Thankyou lakhssss 😌 ❤️✨</h3>
+                <p class="text-base text-pink-700 mt-2 font-medium">I love youuu ummmmahhhhhhhh 😘😘😘😘 🥰</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="z-10 font-cursive text-xl text-purple-800 font-medium mb-4 drop-shadow-sm">
+        Enod ni orikalum mindathe irikell 😞😭✨
+    </footer>
+
+    <script>
+        // Generate floating background hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = ['💖', '🌸', '✨', '💕', '🌷'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            document.getElementById('hearts-container').appendChild(heart);
+            setTimeout(() => heart.remove(), 7000);
+        }
+        setInterval(createHeart, 500);
+
+        // Variables for No Button logic
+        const noBtn = document.getElementById('no-btn');
+        const noText = document.getElementById('no-text');
+        let clickCount = 0;
+        let textTimeout;
+        let isMoving = false;
+
+        const noMessages = [
+            "Sry plzzz shamik 😭💔",
+            "Nte ponneh alle nod vere aru shamikum vedd sryy eni angnae onnum parayella 😭😭😭",
+            "Kastam und shamikk plzz 😞",
+            "Yes kuthh 😭😭😭😭😭"
+        ];
+
+        function handleNoClick(e) {
+            if (e) e.preventDefault();
+            if (isMoving) return;
+            isMoving = true;
+
+            // Change text to message
+            noText.innerHTML = noMessages[clickCount % 4];
+            noText.className = "text-xs sm:text-sm font-semibold whitespace-normal w-max max-w-[220px] leading-snug pointer-events-none";
+            
+            clickCount++;
+            
+            // Move the button securely
+            moveNoButton();
+
+            // Reset text after 2.5 seconds
+            if (textTimeout) clearTimeout(textTimeout);
+            textTimeout = setTimeout(() => {
+                noText.innerHTML = "No 😢";
+                noText.className = "text-base pointer-events-none"; 
+                isMoving = false;
+            }, 2500);
+
+            // Unlock early if user tries again
+            setTimeout(() => { isMoving = false; }, 400);
+        }
+
+        function moveNoButton() {
+            // Apply fixed position to break free from container bounds
+            noBtn.style.position = 'fixed';
+            noBtn.style.zIndex = '9999';
+            
+            // Assume the max width of the button when large text is displayed
+            const maxAssumedWidth = 260; 
+            const maxAssumedHeight = 100;
+            
+            const yesBtn = document.getElementById('yes-btn');
+            const yesRect = yesBtn.getBoundingClientRect();
+            
+            let newX, newY;
+            let isOverlapping = true;
+            let attempts = 0;
+
+            // Try to find a safe spot that keeps it on screen AND away from Yes button
+            while (isOverlapping && attempts < 50) {
+                // Calculate position ensuring it never goes outside the screen width/height
+                newX = Math.random() * (window.innerWidth - maxAssumedWidth - 20) + 10;
+                newY = Math.random() * (window.innerHeight - maxAssumedHeight - 20) + 10;
+                
+                // Keep 30px distance from Yes button
+                const overlapX = (newX < yesRect.right + 30) && ((newX + maxAssumedWidth) > yesRect.left - 30);
+                const overlapY = (newY < yesRect.bottom + 30) && ((newY + maxAssumedHeight) > yesRect.top - 30);
+                
+                if (!(overlapX && overlapY)) {
+                    isOverlapping = false; // It's safe!
+                }
+                attempts++;
+            }
+
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+        }
+
+        function acceptSorry() {
+            document.getElementById('action-buttons').style.display = 'none';
+            document.getElementById('question-text').style.display = 'none';
+            document.getElementById('success-msg').classList.remove('hidden');
+            document.getElementById('main-gif').src = "https://media.tenor.com/nJmaR7jT5DkAAAAi/peach-cat-kiss.gif";
+
+            confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, colors: ['#ffc0cb', '#ff69b4', '#ff1493', '#fff'] });
+            setTimeout(() => confetti({ particleCount: 100, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#ffc0cb', '#ff69b4', '#ff1493', '#fff'] }), 300);
+            setTimeout(() => confetti({ particleCount: 100, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#ffc0cb', '#ff69b4', '#ff1493', '#fff'] }), 600);
+        }
+    </script>
+</body>
+</html>
